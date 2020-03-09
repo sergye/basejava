@@ -4,7 +4,7 @@ import java.util.Arrays;
  */
 public class ArrayStorage {
     Resume[] storage = new Resume[10000];
-    int size = 0;
+    int size;
 
     void clear() {
         Arrays.fill(storage, 0, size, null);
@@ -14,7 +14,7 @@ public class ArrayStorage {
     void save(Resume resume) {
         if (getIndex(resume.toString()) != -1) {
             System.out.println("model.Resume " + resume.toString() + " already exist");
-        } else if (size >= 10000) {
+        } else if (size >= storage.length) {
             System.out.println("storage.Storage overflow");
         } else {
             storage[size] = resume;
@@ -46,7 +46,7 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll() {
-        return Arrays.copyOfRange(storage, 0, size);
+        return Arrays.copyOf(storage, size);
     }
 
     int size() {
