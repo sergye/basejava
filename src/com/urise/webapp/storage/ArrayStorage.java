@@ -1,5 +1,7 @@
 package com.urise.webapp.storage;
 
+import com.urise.webapp.model.Resume;
+
 import java.util.Arrays;
 /**
  * Array based storage for Resumes
@@ -8,12 +10,12 @@ public class ArrayStorage {
     Resume[] storage = new Resume[10000];
     int size;
 
-    void clear() {
+    public void clear() {
         Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
-    void save(Resume resume) {
+    public void save(Resume resume) {
         if (getIndex(resume.toString()) != -1) {
             System.out.println("model.com.urise.webapp.model.Resume " + resume.toString() + " already exist");
         } else if (size >= storage.length) {
@@ -24,7 +26,7 @@ public class ArrayStorage {
         }
     }
 
-    Resume get(String uuid) {
+    public Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
             System.out.println("model.com.urise.webapp.model.Resume " + uuid + " not exist");
@@ -33,7 +35,7 @@ public class ArrayStorage {
         return storage[index];
     }
 
-    void delete(String uuid) {
+    public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
             System.out.println("model.com.urise.webapp.model.Resume " + uuid + " not exist");
@@ -47,11 +49,11 @@ public class ArrayStorage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll() {
+    public Resume[] getAll() {
         return Arrays.copyOf(storage, size);
     }
 
-    int size() {
+    public int size() {
         return size;
     }
 
