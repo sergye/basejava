@@ -26,6 +26,16 @@ public class ArrayStorage {
         }
     }
 
+
+    public void update(Resume resume) {
+        int index = getIndex(resume.toString());
+        if (index == -1) {
+            System.out.println("model.com.urise.webapp.model.Resume " + index + " not exist");
+        } else {
+            storage[index] = resume;
+        }
+    }
+
     public Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
