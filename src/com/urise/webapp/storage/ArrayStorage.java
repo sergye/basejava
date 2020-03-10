@@ -26,7 +26,6 @@ public class ArrayStorage {
         }
     }
 
-
     public void update(Resume resume) {
         int index = getIndex(resume.toString());
         if (index == -1) {
