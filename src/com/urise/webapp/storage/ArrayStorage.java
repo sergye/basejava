@@ -7,8 +7,8 @@ import java.util.Arrays;
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    Resume[] storage = new Resume[10000];
-    int size;
+    Resume[] storage = new Resume[10_000];
+    private int size;
 
     public void clear() {
         Arrays.fill(storage, 0, size, null);
@@ -16,8 +16,8 @@ public class ArrayStorage {
     }
 
     public void save(Resume resume) {
-        if (getIndex(resume.toString()) != -1) {
-            System.out.println("model.com.urise.webapp.model.Resume " + resume.toString() + " already exist");
+        if (getIndex(resume.getUuid()) != -1) {
+            System.out.println("model.com.urise.webapp.model.Resume " + resume.getUuid() + " already exist");
         } else if (size >= storage.length) {
             System.out.println("storage.Storage overflow");
         } else {
@@ -27,7 +27,7 @@ public class ArrayStorage {
     }
 
     public void update(Resume resume) {
-        int index = getIndex(resume.toString());
+        int index = getIndex(resume.getUuid());
         if (index == -1) {
             System.out.println("model.com.urise.webapp.model.Resume " + index + " not exist");
         } else {
@@ -68,7 +68,7 @@ public class ArrayStorage {
 
     private int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].toString())) {
+            if (uuid.equals(storage[i].getUuid())) {
                 return i;
             }
         }
