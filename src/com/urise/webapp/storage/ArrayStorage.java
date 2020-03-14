@@ -17,7 +17,7 @@ public class ArrayStorage {
 
     public void save(Resume resume) {
         if (getIndex(resume.getUuid()) != -1) {
-            System.out.println("model.com.urise.webapp.model.Resume " + resume.getUuid() + " already exist");
+            System.out.println("Resume " + resume.getUuid() + " already exists");
         } else if (size >= storage.length) {
             System.out.println("storage.Storage overflow");
         } else {
@@ -29,7 +29,7 @@ public class ArrayStorage {
     public void update(Resume resume) {
         int index = getIndex(resume.getUuid());
         if (index == -1) {
-            System.out.println("model.com.urise.webapp.model.Resume " + index + " not exist");
+            System.out.println("Resume " + resume.getUuid() + " does not exist");
         } else {
             storage[index] = resume;
         }
@@ -38,7 +38,7 @@ public class ArrayStorage {
     public Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
-            System.out.println("model.com.urise.webapp.model.Resume " + uuid + " not exist");
+            System.out.println("Uuid " + uuid + " does not exist");
             return null;
         }
         return storage[index];
@@ -47,7 +47,7 @@ public class ArrayStorage {
     public void delete(String uuid) {
         int index = getIndex(uuid);
         if (index == -1) {
-            System.out.println("model.com.urise.webapp.model.Resume " + uuid + " not exist");
+            System.out.println("Uuid " + uuid + " does not exist");
         } else {
             storage[index] = storage[size - 1];
             storage[size - 1] = null;
